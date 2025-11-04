@@ -4,6 +4,20 @@ Classifier le caractère comme NPC, Kobold, ou Héros.
 """
 import random
 import time
+from enum import Enum
+
+
+class Alignement(Enum):
+    LawfulGood = 1
+    NeutralGood = 2
+    ChaoticGood = 3
+    LawfulNeutral = 4
+    Neutral = 5
+    ChaoticNeutral = 6
+    LawfulEvil = 7
+    NeutralEvil = 8
+    ChaoticEvil = 9
+    null = 10
 
 
 class NPC:
@@ -20,7 +34,9 @@ class NPC:
         self.espece = None
         self.hp = None
         self.profession = None
+        self.alignement = 0
         self.des = []
+        self.vivant = True
         self.roulement_des()
 
     def roulement_des(self):
@@ -58,6 +74,13 @@ class NPC:
               f"\nAgilité: {self.agilite}\nConstitution: {self.constitution}\nIntelligence: {self.intelligence}"
               f"\nSagesse: {self.sagesse}\nCharisme: {self.charisme}\nArmure: {self.armure}")
 
+    def est_vivant(self):
+        if self.hp <= 0:
+            self.vivant = False
+            print(f"Le caractère n'est plus vivant.")
+        else:
+            pass
+
 
 non_joueur = NPC()
 joueur = NPC()
@@ -69,6 +92,7 @@ class Kobold(NPC):
         self.dmg = None
         self.d20 = None
         self.cible = None
+        self.vivant = True
 
     def attaquer(self, cible):
         self.d20 = random.randint(1, 20)
@@ -102,6 +126,12 @@ class Heros(NPC):
         self.dmg = None
         self.cible = None
         self.d20 = None
+        self.vivant = True
+
+    def subir_dommage(self, dmg):
+        self.hp -= dmg
+        joueur_heros = joueur
+        joueur_heros.hp -= self.dmg
 
     def attaquer(self, cible):
         self.d20 = random.randint(1, 20)
@@ -124,10 +154,23 @@ class Heros(NPC):
             if self.d20 <= cible.armure:
                 print(f"*Swoosh!* Vous manquez l'attaque! Il a encore {cible.hp} points de vie.")
 
-    def subir_dommage(self):
-        self.dmg = random.randint(1, 6)
-        joueur_heros = joueur
-        joueur_heros.hp -= self.dmg
+
+class ItemData:
+    def __init__(self):
+        self.quantite_item = 0
+        self.nom_item = str("")
+
+
+class SacADos(ItemData):
+    def __init__(self):
+        super().__init__()
+        self.list_item = ["Épée", "Bouclier", "Porc", "Fruits", "Potion", "Armure"]
+
+    def ajouter_item(self):
+        item = ItemData()
+        item.nom_item = random.choice(self.list_item)
+        item.quantite_item += 1
+        print(f"Item added: {item.nom_item}")
 
 
 kobold_joueur = Kobold()
@@ -135,3 +178,8 @@ heros_joueur = Heros()
 
 heros_joueur.attaquer(kobold_joueur)
 kobold_joueur.attaquer(heros_joueur)
+heros_joueur.est_vivant()
+kobold_joueur.est_vivant()
+
+sac = SacADos()
+sac.ajouter_item()
