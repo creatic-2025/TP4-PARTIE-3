@@ -4,6 +4,7 @@ Classifier le caractère comme NPC, Kobold, ou Héros.
 """
 import random
 import time
+from dataclasses import dataclass
 from enum import Enum
 
 
@@ -98,7 +99,7 @@ class Kobold(NPC):
         self.d20 = random.randint(1, 20)
         if self.d20 == 20:
             hp_loss = random.randint(1, 8)
-            cible.subir_dommage()
+            cible.subir_dommage(hp_loss)
             time.sleep(1)
             print(f"*Slash!* Un attaque critique! Vouz endommagez le cible de {hp_loss}. Il a maintenant {cible.hp}"
                   f"")
@@ -134,7 +135,7 @@ class Heros(NPC):
 
         if self.d20 == 20:
             hp_loss = random.randint(1, 8)
-            cible.subir_dommage()
+            cible.subir_dommage(hp_loss)
             time.sleep(1)
             print(f"*Slash!* Un attaque critique! Vouz endommagez le cible de {hp_loss}. Il a maintenant {cible.hp}"
                   f"")
@@ -151,6 +152,27 @@ class Heros(NPC):
                 print(f"*Swoosh!* Vous manquez l'attaque! Il a encore {cible.hp} points de vie.")
 
 
+@dataclass
+class Item:
+    qte = int
+    nom_item = str
+
+
+class SacADos(Item):
+    def __init__(self):
+        super().__init__()
+        self.liste_item = []
+        nom_item = self.nom_item
+        qte = self.qte
+        print(f"test: {nom_item}, {qte}")
+
+    def ajouter_item(self, nom, qte):
+        nom = self.nom_item
+        qte = 0
+        item = Item()
+        item_ajouter = self.liste_item.append(nom)
+        print(f"test: {self.liste_item}, {qte}")
+
 
 
 
@@ -162,4 +184,5 @@ kobold_joueur.attaquer(heros_joueur)
 heros_joueur.est_vivant()
 kobold_joueur.est_vivant()
 
-
+sac = SacADos()
+sac.ajouter_item("Or", 15)
