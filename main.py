@@ -118,7 +118,6 @@ class Kobold(NPC):
         self.hp -= dmg
 
 
-
 class Heros(NPC):
     def __init__(self):
         super().__init__()
@@ -129,7 +128,6 @@ class Heros(NPC):
 
     def subir_dommage(self, dmg):
         self.hp -= dmg
-
 
     def attaquer(self, cible):
         self.d20 = random.randint(1, 20)
@@ -153,23 +151,7 @@ class Heros(NPC):
                 print(f"*Swoosh!* Vous manquez l'attaque! Il a encore {cible.hp} points de vie.")
 
 
-class ItemData:
-    def __init__(self):
-        self.quantite_item = 0
-        self.nom_item = str("")
 
-
-class SacADos:
-    def __init__(self):
-        super().__init__()
-        self.list_item = ["Épée", "Bouclier", "Porc", "Fruits", "Potion", "Armure"]
-
-    def ajouter_item(self, nom_item, qte):
-        item_a_ajouter = ItemData(nom_item, qte)
-        item = ItemData()
-        item.nom_item = random.choice(self.list_item)
-        item.quantite_item += 1
-        print(f"Item added: {item.nom_item}")
 
 
 kobold_joueur = Kobold()
@@ -180,5 +162,4 @@ kobold_joueur.attaquer(heros_joueur)
 heros_joueur.est_vivant()
 kobold_joueur.est_vivant()
 
-sac = SacADos()
-sac.ajouter_item("Or", 15)
+
