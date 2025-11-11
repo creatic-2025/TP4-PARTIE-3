@@ -7,6 +7,8 @@ import time
 from dataclasses import dataclass
 from enum import Enum
 
+sacados = True
+
 
 class Alignement(Enum):
     LawfulGood = 1
@@ -166,14 +168,16 @@ class SacADos(Item):
         qte = self.qte
         print(f"test: {nom_item}, {qte}")
 
-    def ajouter_item(self, nom, qte):
-        nom = self.nom_item
+    def ajouter_item(self, nom, qte_item):
+        nom_item = self.nom_item
         qte = 0
-        item = Item()
-        item_ajouter = self.liste_item.append(nom)
-        print(f"test: {self.liste_item}, {qte}")
-
-
+        self.liste_item.append(nom)
+        qte += qte_item
+        print(f"test: {self.liste_item}")
+        if self.liste_item == nom_item:
+            print(f"test: {self.liste_item}")
+        else:
+            pass
 
 
 kobold_joueur = Kobold()
@@ -186,3 +190,5 @@ kobold_joueur.est_vivant()
 
 sac = SacADos()
 sac.ajouter_item("Or", 15)
+sac.ajouter_item("Épée", 1)
+sac.ajouter_item("Or", 20)
