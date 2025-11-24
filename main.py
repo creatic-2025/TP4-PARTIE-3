@@ -172,7 +172,7 @@ class SacADos(Item):
         nom_item = self.nom_item
         qte = qte_item
         nouveau_qte = qte + qte_item
-        if self.liste_item == nom_item:
+        if self.liste_item.__contains__(nom_item):
             print(f"test: {self.liste_item}, {nouveau_qte}")
             pass
         else:
