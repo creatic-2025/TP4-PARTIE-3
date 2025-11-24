@@ -170,14 +170,14 @@ class SacADos(Item):
 
     def ajouter_item(self, nom, qte_item):
         nom_item = self.nom_item
-        qte = 0
-        self.liste_item.append(nom)
-        qte += qte_item
-        print(f"test: {self.liste_item}")
+        qte = qte_item
+        nouveau_qte = qte + qte_item
         if self.liste_item == nom_item:
-            print(f"test: {self.liste_item}")
-        else:
+            print(f"test: {self.liste_item}, {nouveau_qte}")
             pass
+        else:
+            self.liste_item.append(nom)
+            print(f"test: {self.liste_item}, {nouveau_qte}")
 
 
 kobold_joueur = Kobold()
@@ -190,7 +190,4 @@ kobold_joueur.est_vivant()
 
 sac = SacADos()
 sac.ajouter_item("Or", 15)
-sac.ajouter_item("Épée", 1)
-sac.ajouter_item("Or", 20)
-time.sleep(2)
-sac.ajouter_item("Bouclier", 1)
+sac.ajouter_item("Or", 15)
