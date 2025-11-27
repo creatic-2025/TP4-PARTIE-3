@@ -159,6 +159,17 @@
     <option name="localTasksCounter" value="12" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Modifying the code to add Enums" />
     <MESSAGE value="Added a backpack, yet to be finished. Couple bugs remain." />

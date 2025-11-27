@@ -156,28 +156,40 @@ class Heros(NPC):
 
 @dataclass
 class Item:
-    qte = int
-    nom_item = str
+    qte: int
+    nom: str
 
 
-class SacADos(Item):
+class SacADos:
     def __init__(self):
-        super().__init__()
         self.liste_item = []
-        nom_item = self.nom_item
-        qte = self.qte
-        print(f"test: {nom_item}, {qte}")
+        # nom_item = self.nom
+        # qte = self.qte
+        # print(f"test: {nom_item}, {qte}")
 
     def ajouter_item(self, nom, qte_item):
-        nom_item = self.nom_item
-        qte = qte_item
-        nouveau_qte = qte + qte_item
-        if self.liste_item.__contains__(nom_item):
-            print(f"test: {self.liste_item}, {nouveau_qte}")
-            pass
-        else:
-            self.liste_item.append(nom)
-            print(f"test: {self.liste_item}, {nouveau_qte}")
+        if len(self.liste_item) == 0:
+            self.liste_item.append(Item(qte_item, nom))
+            return
+
+        for item in self.liste_item:
+            if item.nom == nom:
+                item.qte += qte_item
+            elif item.nom != nom:
+                self.liste_item.append(Item(qte_item, nom))
+                return
+
+    def retirer_item(self, nom, qte_item):
+        for item in self.liste_item:
+            if item.nom == nom:
+                if qte_item > item.qte:
+                    print(f"Il n'y a pas {item.qte} de {nom}. Essayez encore.")
+                if nom != item.nom:
+                    print("Cette item n'éxiste pas.")
+                else:
+                    item.qte -= qte_item
+                    if item.qte == 0:
+                        self.liste_item.remove(item)
 
 
 kobold_joueur = Kobold()
@@ -191,3 +203,9 @@ kobold_joueur.est_vivant()
 sac = SacADos()
 sac.ajouter_item("Or", 15)
 sac.ajouter_item("Or", 15)
+sac.ajouter_item("Argent", 15)
+time.sleep(1)
+sac.retirer_item("Argent", 15)
+sac.retirer_item("jasdklfjadfklasjdflkjdas", 1)
+
+print(sac.liste_item)
