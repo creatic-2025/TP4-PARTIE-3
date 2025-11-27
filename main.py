@@ -121,37 +121,6 @@ class Kobold(NPC):
         self.hp -= dmg
 
 
-class Heros(NPC):
-    def __init__(self):
-        super().__init__()
-        self.dmg = None
-        self.cible = None
-        self.d20 = None
-        self.vivant = True
-
-    def subir_dommage(self, dmg):
-        self.hp -= dmg
-
-    def attaquer(self, cible):
-        self.d20 = random.randint(1, 20)
-
-        if self.d20 == 20:
-            hp_loss = random.randint(1, 8)
-            cible.subir_dommage(hp_loss)
-            time.sleep(1)
-            print(f"*Slash!* Un attaque critique! Vouz endommagez le cible de {hp_loss}. Il a maintenant {cible.hp}"
-                  f"")
-        elif self.d20 == 1:
-            time.sleep(1)
-            print(f"*Swoosh!* Vous manquez l'attaque! Il a encore {cible.hp} points de vie.")
-        else:
-            if self.d20 >= cible.armure:
-                dommage = random.randint(1, 6)
-                print(f"*Slash!* Vous réuississez à causé {dommage} dégats. L'adversaire a {cible.hp}"
-                      f" points de vie.")
-                cible.subir_dommage(dommage)
-            if self.d20 <= cible.armure:
-                print(f"*Swoosh!* Vous manquez l'attaque! Il a encore {cible.hp} points de vie.")
 
 
 @dataclass
@@ -184,12 +153,51 @@ class SacADos:
             if item.nom == nom:
                 if qte_item > item.qte:
                     print(f"Il n'y a pas {item.qte} de {nom}. Essayez encore.")
-                if nom != item.nom:
-                    print("Cette item n'éxiste pas.")
+                    return
+
                 else:
                     item.qte -= qte_item
                     if item.qte == 0:
                         self.liste_item.remove(item)
+                if nom != item.nom:
+                    print("Cette item n'éxiste pas.")
+
+    def voir_contenu(self):
+        print(f"Ton sac à dos:\n {self.liste_item}")
+
+
+class Heros(NPC, SacADos):
+    def __init__(self):
+        super().__init__()
+        self.dmg = None
+        self.cible = None
+        self.d20 = None
+        self.vivant = True
+
+    def subir_dommage(self, dmg):
+        self.hp -= dmg
+
+    def attaquer(self, cible):
+        self.d20 = random.randint(1, 20)
+
+        if self.d20 == 20:
+            hp_loss = random.randint(1, 8)
+            cible.subir_dommage(hp_loss)
+            time.sleep(1)
+            print(f"*Slash!* Un attaque critique! Vouz endommagez le cible de {hp_loss}. Il a maintenant {cible.hp}"
+                  f"")
+        elif self.d20 == 1:
+            time.sleep(1)
+            print(f"*Swoosh!* Vous manquez l'attaque! Il a encore {cible.hp} points de vie.")
+        else:
+            if self.d20 >= cible.armure:
+                dommage = random.randint(1, 6)
+                print(f"*Slash!* Vous réuississez à causé {dommage} dégats. L'adversaire a {cible.hp}"
+                      f" points de vie.")
+                cible.subir_dommage(dommage)
+            if self.d20 <= cible.armure:
+                print(f"*Swoosh!* Vous manquez l'attaque! Il a encore {cible.hp} points de vie.")
+
 
 
 kobold_joueur = Kobold()
@@ -205,7 +213,9 @@ sac.ajouter_item("Or", 15)
 sac.ajouter_item("Or", 15)
 sac.ajouter_item("Argent", 15)
 time.sleep(1)
-sac.retirer_item("Argent", 15)
-sac.retirer_item("jasdklfjadfklasjdflkjdas", 1)
+sac.retirer_item("Argent", 13)
+sac.retirer_item("Or", 24)
+time.sleep(1)
+sac.voir_contenu()
 
 print(sac.liste_item)
