@@ -121,8 +121,6 @@ class Kobold(NPC):
         self.hp -= dmg
 
 
-
-
 @dataclass
 class Item:
     qte: int
@@ -198,6 +196,10 @@ class Heros(NPC, SacADos):
             if self.d20 <= cible.armure:
                 print(f"*Swoosh!* Vous manquez l'attaque! Il a encore {cible.hp} points de vie.")
 
+    def voir_contenu(self):
+        print("Contenu de l'Héros:")
+        time.sleep(0.5)
+        sac.voir_contenu()
 
 
 kobold_joueur = Kobold()
@@ -219,3 +221,5 @@ time.sleep(1)
 sac.voir_contenu()
 
 print(sac.liste_item)
+
+heros_joueur.voir_contenu()
