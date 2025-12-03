@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6692eef-e29b-4fbd-8cd7-d7c2edc596a9" name="Changes" comment="Remaking backpack" />
+    <list default="true" id="e6692eef-e29b-4fbd-8cd7-d7c2edc596a9" name="Changes" comment="Sac à dos est créé avec succès, TP4 partie 3.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,12 +29,15 @@
     &quot;assignee&quot;: &quot;creatic-2025&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/creatic-2025/TP4-PARTIE-3.git&quot;,
-    &quot;accountId&quot;: &quot;6c69999d-4858-4495-9397-fdc932081b01&quot;
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="471b275b-33d1-46c8-b41f-750c70bd90b9" />
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/creatic-2025/TP4-PARTIE-3.git",
+    "accountId": "471b275b-33d1-46c8-b41f-750c70bd90b9"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -41,14 +47,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bernaquezgirardd/PycharmProjects/TP4-PARTIE 3&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/bernaquezgirardd/PycharmProjects/TP4-PARTIE 3",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -169,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764278358305</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Sac à dos est créé avec succès, TP4 partie 3.">
+      <option name="closed" value="true" />
+      <created>1764787581084</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1764787581084</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +202,7 @@
     <MESSAGE value="Modifying the code to add Enums" />
     <MESSAGE value="Added a backpack, yet to be finished. Couple bugs remain." />
     <MESSAGE value="Remaking backpack" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remaking backpack" />
+    <MESSAGE value="Sac à dos est créé avec succès, TP4 partie 3." />
+    <option name="LAST_COMMIT_MESSAGE" value="Sac à dos est créé avec succès, TP4 partie 3." />
   </component>
 </project>

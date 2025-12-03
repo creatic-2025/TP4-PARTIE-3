@@ -147,18 +147,18 @@ class SacADos:
                 return
 
     def retirer_item(self, nom, qte_item):
+        item_found = False
         for item in self.liste_item:
             if item.nom == nom:
+                item_found = True
                 if qte_item > item.qte:
-                    print(f"Il n'y a pas {item.qte} de {nom}. Essayez encore.")
+                    print(f"Il n'y a pas {qte_item} de {nom}. Essayez encore.")
                     return
-
-                else:
-                    item.qte -= qte_item
-                    if item.qte == 0:
-                        self.liste_item.remove(item)
-                if nom != item.nom:
-                    print("Cette item n'éxiste pas.")
+                item.qte -= qte_item
+                if item.qte == 0:
+                    self.liste_item.remove(item)
+        if not item_found:
+            print(f"Cet item n'éxiste pas ({nom}).")
 
     def voir_contenu(self):
         print(f"Ton sac à dos:\n {self.liste_item}")
@@ -217,9 +217,8 @@ sac.ajouter_item("Argent", 15)
 time.sleep(1)
 sac.retirer_item("Argent", 13)
 sac.retirer_item("Or", 24)
+sac.retirer_item("Or", 30)
+sac.retirer_item("Argent", 2)
+sac.retirer_item("Argen2222t", 2)
 time.sleep(1)
 sac.voir_contenu()
-
-print(sac.liste_item)
-
-heros_joueur.voir_contenu()
